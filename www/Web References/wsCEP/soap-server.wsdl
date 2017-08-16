@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.maniezo.com.br/" xmlns:si="http://soapinterop.org/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.maniezo.com.br/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types />
+  <wsdl:message name="traz_cepRequest">
+    <wsdl:part name="cep" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="traz_cepResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="traz_cep_partesRequest">
+    <wsdl:part name="cep" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="traz_cep_partesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="calcula_freteRequest">
+    <wsdl:part name="frete" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="calcula_freteResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="calcula_fretePortType">
+    <wsdl:operation name="traz_cep">
+      <wsdl:input message="tns:traz_cepRequest" />
+      <wsdl:output message="tns:traz_cepResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="traz_cep_partes">
+      <wsdl:input message="tns:traz_cep_partesRequest" />
+      <wsdl:output message="tns:traz_cep_partesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="calcula_frete">
+      <wsdl:input message="tns:calcula_freteRequest" />
+      <wsdl:output message="tns:calcula_freteResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="calcula_freteBinding" type="tns:calcula_fretePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="traz_cep">
+      <soap:operation soapAction="http://www.maniezo.com.br/webservice/soap-server.php" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.maniezo.com.br/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.maniezo.com.br/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="traz_cep_partes">
+      <soap:operation soapAction="http://www.maniezo.com.br/webservice/soap-server.php" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.maniezo.com.br/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.maniezo.com.br/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcula_frete">
+      <soap:operation soapAction="http://www.maniezo.com.br/webservice/soap-server.php" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.maniezo.com.br/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.maniezo.com.br/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="calcula_frete">
+    <wsdl:port name="calcula_fretePort" binding="tns:calcula_freteBinding">
+      <soap:address location="http://www.maniezo.com.br/webservice/soap-server.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

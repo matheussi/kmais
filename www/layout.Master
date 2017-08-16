@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="layout.master.cs" Inherits="www.layout" %>
+
+<%@ Register Src="usercontrols/menuPrincipal.ascx" TagName="menuPrincipal" TagPrefix="uc1" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head id="Head1" runat="server">
+    <title>CADBEN</title>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" >-->
+    <script src="js/common.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="jQuery/plugins/autocomplete/jquery.autocomplete.css" />
+    <script language="javascript" type="text/javascript">
+        function mascara_cel9(Campo, evt) {
+            var tecla;
+
+            if (evt.keyCode)
+                tecla = evt.keyCode;
+            else
+                tecla = evt.which;
+
+            var vr = new String(Campo.value);
+            vr = vr.replace(".", "");
+            vr = vr.replace(".", "");
+            vr = vr.replace("/", "");
+            vr = vr.replace("-", "");
+
+            tam = vr.length + 1;
+
+            if (tam > 4) {
+                if (tam >= 10)
+                    Campo.value = vr.substr(0, 5) + '-' + vr.substr(5, tam);
+                else {
+                    if (tam != 5)
+                        Campo.value = vr.substr(0, 4) + '-' + vr.substr(4, tam);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <cc1:ToolkitScriptManager EnableScriptGlobalization="True" ID="sm" runat="server" />
+    <asp:UpdateProgress runat="server" ID="updateProgress">
+        <ProgressTemplate>
+            <div class='carregando'>
+                <table cellpadding="0" cellspacing="0" style="width:100%;height:100%">
+                    <tr>
+                        <td align="center" valign="middle">
+                            <div style="border:solid 1px gray; height:50px;width:250px;background-color:whitesmoke;line-height:50px">
+                                <span style="color:black;font-size:10pt"><font color="black">Aguarde por favor...</font></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+    <div id='GeralSite'>
+        <div id='CorpoSite'>
+            <div id='Logo'>
+                <%--<img runat="server" enableviewstate="false" src='~/images/site/Logo.png' alt='' border='0' />--%>
+                <img id="Img1" runat="server" enableviewstate="false" src='http://www.cesa.org.br/sistema/img/site/logo.png' alt='' border='0' />
+             </div>
+                
+            <uc1:menuPrincipal ID="mnuPrincipal" runat="server" />
+            <div id="TituloPagina">
+                <asp:ContentPlaceHolder ID="cphTitle" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <div id='ContSite'>
+            <asp:UpdatePanel runat="server" ID="up" UpdateMode="Conditional">
+                <ContentTemplate>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <div id='CorpoConteudo'>
+                <div id='Conteudo'>
+                    <asp:ContentPlaceHolder ID="cphContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        <div id='btConteudo'>
+        </div>
+        <div id='tpRodape'>
+        </div>
+        <div id='meioRodape'>
+            <div id='CorpoRodape'>
+                <div id='Rodape'>
+                    CADBEN
+                </div>
+            </div>
+            <div id='btRodape'>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

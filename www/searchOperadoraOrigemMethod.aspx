@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="searchOperadoraOrigemMethod.aspx.cs" Inherits="www.searchOperadoraOrigemMethod" %>

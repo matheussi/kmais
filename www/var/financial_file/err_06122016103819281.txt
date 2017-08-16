@@ -1,0 +1,10 @@
+There are not business object for identity 39464.
+-----------------------------------------
+   em LC.Framework.Phantom.PersistenceManager.Load() na C:\LCProjects\Framework\Phantom\PersistenceManager.cs:linha 597
+   em LC.Framework.Phantom.PersistenceManager.Load(IPersisteableEntity entity) na C:\LCProjects\Framework\Phantom\PersistenceManager.cs:linha 570
+   em LC.Web.PadraoSeguros.Entity.Endereco.Carregar(PersistenceManager pm) na C:\inetpub\wwwroot\Ubrasp\Entity\Endereco.cs:linha 199
+   em LC.Web.PadraoSeguros.Entity.ArquivoCobrancaUnibanco.GeraDocumentoCobranca_SANTANDER(IList`1 cobrancaIDs, String& arquivoNome, String& arquivoConteudo, Object& arquivoId, String& arquivoVersao, IList`1 aras, PersistenceManager _pm) na C:\inetpub\wwwroot\Ubrasp\Entity\Cobranca.cs:linha 8449
+-----------------------------------------
+3611
+-----------------------------------------
+46

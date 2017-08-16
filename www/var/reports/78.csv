@@ -1,0 +1,2 @@
+sep=|
+Operadora|Estipulante|Carteira|NumeroContrato|Seq|CompeVencto|IdBenef|InicioBenef|NomeBeneficiario|CPFbeneficiario|IDADE|DataNascimento|DataVigência|DataCancelInativo|DataVencto|DataPagto|CodCobranca|Parcela|cobranca_id|cobrancacomp_id|Plano|Desconto|tabelavalor_id|DataVencto|TabVenctoInicio|TabVenctoFim|Criação|Filial|FaixaEtaria|Parentesco|TipoBaixa|Valor_Boleto|Valor_Pago|Tipo_Boleto|TIPO|Acomodacao|StatusBoleto|ValorDetalhe|Valor_Operadora|Valor_TabCliente|Cedente

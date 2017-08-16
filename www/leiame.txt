@@ -1,0 +1,6 @@
+﻿PARAMETROS DE CAMiNHO DE ARQUIVOS - BOLETOS
+
+contratos.aspx.cs: html = sr.ReadToEnd().Replace(@"D:\http\ubrasp\web\var\boleto_file\", @"http://ubrasp.iphotel.info/images/boleto/BoletoNetBarra.gif"); 
+UBRASP/contratos.aspx.cs: html = sr.ReadToEnd().Replace(@"D:\http\ubrasp\web\var\boleto_file\", @"http://ubrasp.iphotel.info/images/boleto/BoletoNetBarra.gif"); 
+boleto/santander2.aspx.cs: string caminhoFisico = @"D:\http\ubrasp\web\var\boleto_file\";
+Boleto.Net/BoletoImpressao/BoletoBancario.cs: string caminhoFisico = @"D:\http\ubrasp\web\var\boleto_file\";

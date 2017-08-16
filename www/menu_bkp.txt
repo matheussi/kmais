@@ -1,0 +1,180 @@
+﻿<%@ Control Language="C#" AutoEventWireup="false" CodeBehind="menuPrincipal.ascx.cs" Inherits="www.usercontrols.menuPrincipal" %>
+<div id='Menu' class="menu_site">
+    <div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
+    <div class='itemMenu'><a id="A1" runat="server" enableviewstate="false" href='~/default.aspx' class='menu_site'>Home</a></div>
+    <div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
+    <div class='itemMenu'>
+        <asp:Menu ID="mnuCadastros" runat="server" Orientation="Horizontal">
+            <StaticMenuItemStyle CssClass="menu_site" />
+            <DynamicMenuStyle BackColor="WhiteSmoke" BorderWidth="1px" HorizontalPadding="8px" VerticalPadding="0px" />
+            <DynamicMenuItemStyle BackColor="WhiteSmoke" BorderColor="darkgray" BorderWidth="0px" CssClass="menu_site" ItemSpacing="0px" HorizontalPadding="8px" VerticalPadding="8px" BorderStyle="None" />
+            <Items>
+                <asp:MenuItem Selectable="false" Text="Cadastros" Value="Cadastros" >
+                    <asp:MenuItem Text="Filiais" NavigateUrl="~/filiais.aspx" Value="Filiais" />
+                    <asp:MenuItem Text="Estipulantes" NavigateUrl="~/estipulantes.aspx" Value="Estipulantes" />
+                    <asp:MenuItem Text="Operadoras" NavigateUrl="~/operadoras.aspx" Value="Operadoras">
+                        <%--<asp:MenuItem Text="Planos" NavigateUrl="~/planos.aspx" Value="Planos">
+                            <asp:MenuItem Text="Tabelas de valores" Value="tabelasValores" NavigateUrl="~/tabelasV.aspx" />
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Tabelas de reajuste" Value="tabelasReajuste" NavigateUrl="~/tabelasR.aspx" />--%>
+                        <asp:MenuItem Text="Agregados e dependentes" NavigateUrl="~/agregados.aspx" Value="AgregadosDependentes" />
+                        <asp:MenuItem Text="Copiar contratos" NavigateUrl="~/admin/copiaContratoAdm.aspx" Value="CopiaContr" />
+                        <asp:MenuItem Text="Estados civis" NavigateUrl="~/admin/estadoscivis.aspx" Value="EstadoCivis" />
+                        <asp:MenuItem Text="Declaração de saúde" Value="declaracaoSaude" NavigateUrl="~/declaracaoSaude.aspx">
+                            <asp:MenuItem Text="Regras da declaração" Value="regrasDeclaracao" NavigateUrl="~/declaracaoSaudeRegrasLista.aspx" />
+                        </asp:MenuItem>
+                        <%--<asp:MenuItem Text="Tabelas de comissionamento" Value="comissioOperad" NavigateUrl="~/comissionamentosOperadora.aspx" />--%>
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Comissionamento" NavigateUrl="~/comissionamentos.aspx" Value="Comissionamento">
+                        <asp:MenuItem Text="Manipulação" NavigateUrl="~/manipulaGradeComissao.aspx" Value="manip" />
+                        <asp:MenuItem Text="Manipulação por produção" NavigateUrl="~/manipulacaoGradeComissaoProd.aspx" Value="manipProd" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Produtores" NavigateUrl="~/admin/users.aspx" Value="Usuarios">
+                        <asp:MenuItem Text="Mudança de equipe" NavigateUrl="~/manipulaEquipe.aspx" Value="MudancaEquipe" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Selectable="false" Text="Almoxarifado" Value="Almox">
+                        <asp:MenuItem  Text="Produtos" NavigateUrl="~/admin/almoxTiposProd.aspx" Value="almoxTiposProd" />
+                        <asp:MenuItem Text="Entradas" NavigateUrl="~/admin/almoxEntradas.aspx" Value="almoxEntradas" />
+                        <asp:MenuItem Text="Saídas" NavigateUrl="~/admin/almoxSaidas.aspx" Value="almoxSaidas" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Beneficiários" NavigateUrl="~/beneficiarios.aspx" Value="Beneficirio" />
+                    <%--<asp:MenuItem Text="Contratos" NavigateUrl="~/contratosAdm.aspx" Value="Contratos" />--%>
+                    <%--<asp:MenuItem Text="Comissionamento X Usuário" NavigateUrl="~/comissionamentosUsuario.aspx" Value="ComissionamentoUsuario" />
+                    </asp:MenuItem>--%>
+                    <asp:MenuItem Text="Propostas" NavigateUrl="~/contratos.aspx" Value="Contratos">
+                        <asp:MenuItem Text="Importação" Selectable="false" NavigateUrl="#" Value="importAgendSec">
+                            <asp:MenuItem Text="Agendar" NavigateUrl="~/movimentacao/importacaoAgenda.aspx" Value="ImportAgend" />
+                            <asp:MenuItem Text="Agendamentos realizados" NavigateUrl="~/movimentacao/importacaoAgendaLista.aspx" Value="ImportAgendRealiz" />
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Atualização de matrículas" Selectable="true" NavigateUrl="~/movimentacao/informaMatricula.aspx" Value="informaMatricula" />
+                    </asp:MenuItem>
+                    <%--<asp:MenuItem Text="Tabelas de valores" Value="tabelasValores" NavigateUrl="~/tabelasV.aspx" />--%>
+                </asp:MenuItem>
+            </Items>
+        </asp:Menu>
+    </div>
+    <div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
+    <div class='itemMenu'>
+        <asp:Menu ID="mnuMovimentacao" runat="server" Orientation="Horizontal">
+            <StaticMenuItemStyle CssClass="menu_site" />
+            <DynamicMenuStyle BackColor="WhiteSmoke" BorderWidth="1px" HorizontalPadding="8px" VerticalPadding="0px" />
+            <DynamicMenuItemStyle BackColor="WhiteSmoke" BorderColor="darkgray" BorderWidth="0px" CssClass="menu_site" Font-Size="10pt" ItemSpacing="0px" HorizontalPadding="8px" VerticalPadding="8px" BorderStyle="None" />
+            <Items>
+                <asp:MenuItem Selectable="false" Text="Movimentação" Value="Movimentacao" >
+                    <asp:MenuItem Selectable="false" Text="Arquivos transacionais" NavigateUrl="#" Value="ArqIncl">
+                        <asp:MenuItem Text="Gerar arquivo"       NavigateUrl="~/arquivoTransacional.aspx" Value="ArqInclGerar">
+                            <asp:MenuItem Text="Unimed" NavigateUrl="~/movimentacao/arquivotransacionalUNIMED.aspx" Value="ArqMovUnimed" />
+                            <asp:MenuItem Text="Amil"   NavigateUrl="~/movimentacao/arquivotransacionalAMIL.aspx" Value="ArqMovAmil" />
+                            <asp:MenuItem Text="Demais arquivos" NavigateUrl="~/arquivoTransacional.aspx" Value="DemaisArqMov" />
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Baixar arquivos" NavigateUrl="~/arquivoTransacionalBaixa.aspx" Value="ArqInclBaixar" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Outros Arquivos" Selectable="false" Value="outrosArq">
+                        <asp:MenuItem Text="Aniversário" NavigateUrl="~/arquivoAniversario.aspx" Value="outrosArq" />
+                        <asp:MenuItem Text="Aviso de cobrança" NavigateUrl="~/arquivoAvisoCobranca.aspx" Value="avisoCob" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Atendimento" Selectable="false" Value="Atendimento">
+                        <asp:MenuItem Text="Novo" NavigateUrl="~/arquivoAtendimento.aspx" Value="arqAtendimento" />
+                        <asp:MenuItem Text="Consultar" NavigateUrl="~/arquivoConsultaAtendimento.aspx" Value="arqConsultaAtendimento" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Relatórios" Selectable="false" Value="MovRelatorios">
+                        <asp:MenuItem Text="Relatório de conferência" NavigateUrl="~/confdigitacao.aspx" Value="relatDigitacao" />
+                        <asp:MenuItem Text="Relatório de entidades" NavigateUrl="~/movimentacao/relatorioEntidades.aspx" Value="relatEntidades" />
+                        <asp:MenuItem Text="Relatório geral" NavigateUrl="~/movimentacao/relatoriogeral.aspx" Value="relatGeral" />
+                    </asp:MenuItem>
+                </asp:MenuItem>
+            </Items>
+        </asp:Menu>
+    </div>
+
+    <div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
+    <div class='itemMenu'>
+        <asp:Menu ID="mnuAdministracao" runat="server" Orientation="Horizontal">
+            <StaticMenuItemStyle CssClass="menu_site" />
+            <DynamicMenuStyle BackColor="WhiteSmoke" BorderWidth="1px" HorizontalPadding="8px" VerticalPadding="0px" />
+            <DynamicMenuItemStyle BackColor="WhiteSmoke" BorderColor="darkgray" BorderWidth="0px" CssClass="menu_site" Font-Size="10pt" ItemSpacing="0px" HorizontalPadding="8px" VerticalPadding="8px" BorderStyle="None" />
+            <Items>
+                <asp:MenuItem Selectable="false" Text="Administração" Value="Administracao" >
+                    <asp:MenuItem Text="Atendimento" Selectable="false" Value="AtendimentoAdm">
+                        <asp:MenuItem Text="Tipo de atendimento" NavigateUrl="~/admin/atendTipoLista.aspx" Value="TipoAtend" />
+                        <asp:MenuItem Text="Relatório de atendimento" NavigateUrl="~/admin/atendRelatorio.aspx" Value="AtendRelatorio" />
+                    </asp:MenuItem>
+                    
+                    <asp:MenuItem Text="Categorias" NavigateUrl="~/admin/categorias.aspx" Value="Categorias"></asp:MenuItem>
+                    <asp:MenuItem Text="Conferência" NavigateUrl="~/admin/conferenciaLista.aspx" Value="Conferencia">
+                        <asp:MenuItem Text="Checklist" NavigateUrl="~/admin/checklistLista.aspx" Value="Checklists" />
+                        <asp:MenuItem Text="Itens de saúde" NavigateUrl="~/admin/itensSaude.aspx" Value="AdmItensSaude" />
+                        <asp:MenuItem Text="Relatório" NavigateUrl="~/admin/conferenciaRel.aspx" Value="ConfRel" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Feriados" NavigateUrl="~/admin/feriados.aspx" Value="Feriados" />
+                    <asp:MenuItem Text="Grupos de venda" NavigateUrl="~/admin/gruposDeVenda.aspx" Value="Grupos"></asp:MenuItem>
+                    <asp:MenuItem Text="Layouts de arquivos" NavigateUrl="~/admin/layoutsArquivos.aspx" Value="Layouts" />
+                    <asp:MenuItem Text="Motivos de alteração de status" NavigateUrl="~/admin/statusMotivosAlteracao.aspx" Value="StMotAlt" />
+                    <asp:MenuItem Text="Motivos de baixa" NavigateUrl="~/admin/cobrancaMotivosBaixa.aspx" Value="CobMotBai"></asp:MenuItem>
+                    <asp:MenuItem Text="Perfis" NavigateUrl="~/admin/perfis.aspx" Value="Perfis"></asp:MenuItem>
+                    <asp:MenuItem Text="Tabelas de exceção" NavigateUrl="~/rep_tabelasExcecao.aspx" Value="TabelasExc"></asp:MenuItem>
+
+                    <asp:MenuItem Text="Tipos de contrato" NavigateUrl="~/admin/tiposcontrato.aspx" Value="TiposContrato"></asp:MenuItem>
+                    <asp:MenuItem Selectable="false" Text="Regras" Value="Regras">
+                        <asp:MenuItem Text="Agregados e dependentes" NavigateUrl="~/agregadosRegra.aspx" Value="AgregadosDependentesREGRAS" />
+                    </asp:MenuItem>
+                    
+                    <asp:MenuItem Text="Usuários" NavigateUrl="~/admin/sysusers.aspx" Value="SysUsuarios"></asp:MenuItem>
+                    <asp:MenuItem Text="Propostas" NavigateUrl="~/admin/admproposta.aspx" Value="AdmProp">
+                    </asp:MenuItem>
+                </asp:MenuItem>
+            </Items>
+        </asp:Menu>
+    </div>
+    <div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
+    <div class='itemMenu'>
+        <asp:Menu ID="mnuFinanceiro" runat="server" Orientation="Horizontal">
+            <StaticMenuItemStyle CssClass="menu_site" />
+            <DynamicMenuStyle BackColor="WhiteSmoke" BorderWidth="1px" HorizontalPadding="8px" VerticalPadding="0px" />
+            <DynamicMenuItemStyle BackColor="WhiteSmoke" BorderColor="darkgray" BorderWidth="0px" CssClass="menu_site" Font-Size="10pt" ItemSpacing="0px" HorizontalPadding="8px" VerticalPadding="8px" BorderStyle="None" />
+            <Items>
+                <asp:MenuItem Selectable="false" Text="Financeiro" Value="Financeiro" >
+                    <asp:MenuItem Text="Arquivos de cobrança" Selectable="false" Value="ArqInclRoot">
+                        <asp:MenuItem Text="Critérios de arquivos" NavigateUrl="~/financeiro/arquivoCobrancaCriterio.aspx" Value="ArqRemCrit" />
+                        <asp:MenuItem Text="Gerar arquivos" NavigateUrl="~/financeiro/arquivoCobrancas.aspx" Value="ArqRem" />
+                        <asp:MenuItem Text="Consultar arquivos" NavigateUrl="~/financeiro/arquivoCobrancasConsulta.aspx" Value="ArqCons" />
+                        <asp:MenuItem Text="Ler retorno" NavigateUrl="~/financeiro/arquivoCobrancasLerRetorno.aspx" Value="ArqProcCrit" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Cobranças geradas" NavigateUrl="~/financeiro/cobrancaOpManual.aspx" Value="CobOpMan"></asp:MenuItem>
+                    <asp:MenuItem Text="Fechamento de listagem" NavigateUrl="~/financeiro/listagemLista.aspx" Value="Comissionamento"></asp:MenuItem>
+                    <asp:MenuItem Text="Conta corrente" NavigateUrl="#" Selectable="false" Value="Comissionamento">
+                        <asp:MenuItem Text="Categorias" NavigateUrl="~/financeiro/categorias.aspx" Value="CategCC" />
+                        <asp:MenuItem Text="Movimentações" NavigateUrl="~/financeiro/movimentacoes_cc.aspx" Value="MovimCC" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Relatórios" Selectable="false" Value="Relatorios">
+                        <asp:MenuItem Text="Comissionamento" NavigateUrl="~/financeiro/relatorios.aspx" Value="CobOpMan" />
+                        <asp:MenuItem Text="Contas a receber" NavigateUrl="#" Selectable="false" Value="cRecber">
+                            <asp:MenuItem Text="Em aberto" NavigateUrl="~/relatorios/cReceberAberto.aspx" Value="cRecAberto" />
+                            <asp:MenuItem Text="Pago" NavigateUrl="~/relatorios/cReceberTaxa.aspx" Value="cRecAbertoTaxa" />
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Controladoria" Selectable="false" NavigateUrl="#" Value="controladoria">
+                            <asp:MenuItem Text="Detalhe" NavigateUrl="~/relatorios/controladoria.aspx" Value="controlDet" />
+                            <asp:MenuItem Text="Taxas" NavigateUrl="~/relatorios/controladoriaTaxa.aspx" Value="controlTaxa" />
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Etiqueta" NavigateUrl="~/financeiro/etiqueta.aspx" Value="relEtiq" />
+                        <asp:MenuItem Text="Ficha Financeira" NavigateUrl="~/relatorios/fichaFinanceira.aspx" Value="fichaFinanceira" />
+                        <%--<asp:MenuItem Enabled="false" Text="Financeiro" NavigateUrl="~/financeiro/painel.aspx" Value="relFin" />--%>
+                        <asp:MenuItem Text="Inadimplência" NavigateUrl="~/financeiro/inadimplentes.aspx" Value="relInad" />
+                        <asp:MenuItem Text="Produção" NavigateUrl="~/financeiro/producao.aspx" Value="relProd" />
+                        <asp:MenuItem Text="Vendas" NavigateUrl="~/relatorios/vendas.aspx" Value="relVend" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Inativações" NavigateUrl="~/financeiro/inativacoes.aspx" Value="Inativacoes"></asp:MenuItem>
+                    <asp:MenuItem Text="Reativações" NavigateUrl="~/financeiro/reativacoes.aspx" Value="Reativacoes"></asp:MenuItem>
+                    <asp:MenuItem Text="2ª via de boleto" NavigateUrl="~/financeiro/exportartxt.aspx" Value="SegVia"></asp:MenuItem>
+                    <asp:MenuItem Text="Parcelamento" NavigateUrl="~/admin/cobrancaRecuperacao.aspx" Value="Parcel"></asp:MenuItem>
+                </asp:MenuItem>
+            </Items>
+        </asp:Menu>
+    </div>
+    <div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
+    <div class='itemMenu'><a runat="server" id="a2" href="~/alterarSenha.aspx" class='menu_site' enableviewstate="false">Senha</a></div>
+    <div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
+    <div class='itemMenu'><a runat="server" id="aSair" href="~/login.aspx" class='menu_site' enableviewstate="false">Sair</a></div>
+    <div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
+    <div class='itemMenu'><a href='#' class='menu_site'></a></div>
+ </div>

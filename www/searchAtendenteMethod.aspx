@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="searchAtendenteMethod.aspx.cs" Inherits="www.searchAtendenteMethod" %>

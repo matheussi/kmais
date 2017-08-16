@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="searchOperadorTMKTMethod.aspx.cs" Inherits="www.searchOperadorTMKTMethod" %>

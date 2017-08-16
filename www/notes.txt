@@ -1,0 +1,221 @@
+﻿nova coluna em beneficiario:			beneficiario_dataCasamento
+nova coluna em contrato_beneficiario:	contratobeneficiario_dataInativo
+nova coluna em contrato_beneficiario:	contratobeneficiario_numeroSequencia (not null)
+
+31/05/2010 - Foi necessário incluir campos para colher informações necessárias ao beneficiário do contrato
+nova coluna em contrato_beneficiario:   contratobeneficiario_carenciaOperadoraId (int)
+nova coluna em contrato_beneficiario:   contratobeneficiario_carenciaMatriculaNumero (varchar - 50)
+nova coluna em contrato_beneficiario:   contratobeneficiario_carenciaContratoTempo - (int)
+nova coluna em contrato_beneficiario:   contratobeneficiario_carenciaCodigo (varchar - 50)
+
+NOVOS PERFIS ADICIONADOS:
+CADASTRO - Usuário do sistema
+CONFERÊNCIA - Usuário do sistema 
+---------------------------------------------------------------------------------------------------
+NECESSIDADE: Logar historico de alteracoes de status de uma proposta, desde o estoque, conferencia.
+PROBLEMA: Com qual entidade relacionar? Não podemos relacionar com a entidade Contrato, uma vez que ela 
+não existe no período de estoque ou conferência. Talvez deva-se relacionar à entidade ContratoImpresso, 
+mas e se a proposta em conferencia não estiver em estoque?
+Usarei um relacionamento composto com "número de contrato" e "id da operadora".
+Script:
+CREATE TABLE [dbo].[contratoStatusHistorico] (
+	[contratostatushistorico_id] [int] IDENTITY (1, 1) NOT NULL ,
+	[contratostatushistorico_operadoraId] [int] NOT NULL ,
+	[contratostatushistorico_propostaNumero] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL ,
+	[contratostatushistorico_status] [tinyint] NOT NULL ,
+	[contratostatushistorico_data] [datetime] NOT NULL 
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[contratoStatusHistorico] WITH NOCHECK ADD 
+	CONSTRAINT [PK_contratoStatusHistorico] PRIMARY KEY  CLUSTERED 
+	(
+		[contratostatushistorico_id]
+	)  ON [PRIMARY] 
+GO
+ALTER TABLE [dbo].[contratoStatusHistorico] ADD 
+	CONSTRAINT [FK_contratoStatusHistorico_operadora] FOREIGN KEY 
+	(
+		[contratostatushistorico_operadoraId]
+	) REFERENCES [dbo].[operadora] (
+		[operadora_id]
+	)
+GO
+---------------------------------------------------------------------------------------------------
+04/06/2010
+
+NOVAS COLUNAS EM declaracao_saude_item_instancia (OBJETO ItemDeclaracaoSaudeINSTANCIA)
+itemDeclaracaoSaudeInstancia_cidInicial varchar(50)
+itemDeclaracaoSaudeInstancia_cidFinal varchar(50)
+itemDeclaracaoSaudeInstancia_aprovadoMedico bit
+itemDeclaracaoSaudeInstancia_obs varchar(1500)
+
+
+NOVOS PERFIS ADICIONADOS:
+MEDICO
+
+---------------------------------------------------------------------------
+07/06/2010 - FASE 2 - Troca de Arquivo ------------------------------------
+---------------------------------------------------------------------------
+
+Crias as duas tabelas abaixo para a funcionalidade de lote de arquivo transacional.
+
+CREATE TABLE [dbo].[arquivo_transacional_lote] (
+	[lote_id] [int] IDENTITY (1, 1) NOT NULL ,
+	[lote_operadora_id] [int] NULL ,
+	[lote_quantidade] [int] NULL ,
+	[lote_numeracao] [int] NULL ,
+	[lote_data_criacao] [datetime] NULL ,
+	[lote_tipo_movimentacao] [varchar] (1) COLLATE Latin1_General_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[arquivo_transacional_lote_item] (
+	[item_id] [int] IDENTITY (1, 1) NOT NULL ,
+	[item_lote_id] [int] NULL ,
+	[item_contrato_id] [int] NULL ,
+	[item_beneficiario_id] [int] NULL ,
+	[item_beneficiario_sequencia] [int] NULL ,
+	[item_ativo] [bit] NULL 
+) ON [PRIMARY]
+GO
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+08/06/2010
+
+NOVAS COLUNAS EM conferencia_itemSaudeInstancia:
+conferenciaItemSaudeInstancia_beneficiarioCpf - varchar(50)
+
+---------------------------------------------------------------------------------------------------
+09/06/2010
+
+NOVAS COLUNAS EM conferencia:
+conferencia_tipoContratoExplicito - bit
+
+NOVAS COLUNAS EM contrato:
+contrato_dataCancelamento - datetime
+
+FASE 2 - Troca de Arquivos
+
+Adicionar a linha abaixo no AppSettings do Web.Config
+<add key="transactFilePath" value="var/transact_file/" />
+
+---------------------------------------------------------------------------------------------------
+10/06/2010
+
+NOVAS COLUNAS EM arquivo_transacional_lote:
+lote_arq_nome	varchar(50) 
+
+NOVAS COLUNAS EM declaracao_saude_item_instancia: 
+itemDeclaracaoSaudeInstancia_dataAprovadoMedico - datetime
+
+CREATE TABLE [dbo].[arquivo_transacional_conf] (
+	[arqc_id] [smallint] IDENTITY (1, 1) NOT NULL ,
+	[arqc_operadora_id] [int] NULL ,
+	[arqc_cod_operadora_singular] [varchar] (10) COLLATE Latin1_General_CI_AS NULL ,
+	[arqc_cod_operadora_naunimed] [varchar] (50) COLLATE Latin1_General_CI_AS NULL ,
+	[arqc_nome_operadora] [varchar] (255) COLLATE Latin1_General_CI_AS NULL ,
+	[arqc_cnpj_operadora] [varchar] (20) COLLATE Latin1_General_CI_AS NULL ,
+	[arqc_tipo_identificacao] [smallint] NULL ,
+	[arqc_versao] [varchar] (50) COLLATE Latin1_General_CI_AS NULL ,
+	[arqc_cei_operadora] [varchar] (13) COLLATE Latin1_General_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+INSERT INTO arquivo_transacional_conf ( arqc_operadora_id, arqc_cod_operadora_singular, arqc_cod_operadora_naunimed, arqc_nome_operadora, arqc_cnpj_operadora, arqc_tipo_identificacao, arqc_versao, arqc_cei_operadora)
+VALUES ('1', '0333', '00042179', 'CLUBE PADRAO DE VIDA', '01716373000126','1', '4.0', '000000000000');
+
+---------------------------------------------------------------------------------------------------
+14/06/2010
+
+NOVAS COLUNAS EM conferencia:
+conferencia_titularBeneficiarioId - int
+conferencia_titularDataNascimento - datetime
+conferencia_titularAdicionais - varchar(150)
+
+NOVAS COLUNAS EM conferenciaBeneficiario:
+conferenciabeneficiario_beneficiarioId - int
+
+---------------------------------------------------------------------------------------------------
+15/06/2010
+
+NOVAS COLUNAS EM contrato_beneficiario:
+contratobeneficiario_valor - decimal(18,2)
+
+
+---------------------------------------------------------------------------------------------------
+17/06/2010
+
+Adicionar a linha abaixo no AppSettings do Web.Config
+<add key="financialFilePath" value="var/financial_file/" />
+<add key="UniC006" value="006" />
+<add key="UniC025" value="025" />
+<add key="UniC026" value="026" />
+<add key="UniC044" value="044" />
+<add key="UniC045" value="045" />
+<add key="UniC047" value="020" />
+
+---------------------------------------------------------------------------------------------------
+18/06/2010
+
+NOVAS COLUNAS EM cobranca
+cobranca_arquivoUltimoEnvioId - int
+
+Adicionar as linhas abaixo no AppSettings do Web.Config
+<add key="UniC007" value="007" />
+<add key="UniC008" value="008" />
+<add key="UniC009" value="009" />
+<add key="UniC010" value="010" />
+<add key="UniC011" value="011" />
+<add key="UniC012" value="012" />
+
+CREATE TABLE [dbo].[arquivoCobrancaUnibanco] (
+	[arquivocobranca_id] [int] IDENTITY (1, 1) NOT NULL ,
+	[arquivocobranca_versao] [int] NOT NULL ,
+	[arquivocobranca_data] [datetime] NOT NULL 
+) ON [PRIMARY]
+
+CREATE TABLE [dbo].[arquivoCobrancaUnibanco_cobanca] (
+	[arqitem_arquivoId] [int] NOT NULL ,
+	[arqitem_cobrancaId] [int] NOT NULL 
+) ON [PRIMARY]
+
+ALTER TABLE [dbo].[arquivoCobrancaUnibanco] WITH NOCHECK ADD 
+	CONSTRAINT [PK_arquivoCobranca] PRIMARY KEY  CLUSTERED 
+	(
+		[arquivocobranca_id]
+	)  ON [PRIMARY] 
+
+ALTER TABLE [dbo].[arquivoCobrancaUnibanco_cobanca] ADD 
+	CONSTRAINT [FK_arquivoCobrancaUnibanco_cobanca_arquivoCobrancaUnibanco] FOREIGN KEY 
+	(
+		[arqitem_arquivoId]
+	) REFERENCES [dbo].[arquivoCobrancaUnibanco] (
+		[arquivocobranca_id]
+	)
+
+
+---------------------------------------------------------------------------------------------------
+18/06/2010
+
+NOVAS COLUNAS EM cobranca:
+cobranca_parcela - int
+
+
+---------------------------------------------------------------------------------------------------
+22/06/2010
+
+NOVAS COLUNAS EM estipulante:
+estipulante_textoBoleto - varchar(500)
+
+NOVAS COLUNAS EM contrato:
+contrato_cobrarTaxaAssociativa - bit
+
+NOVAS COLUNAS EM calendario:
+calendario_dataSemJurosDia - tinyint
+calendario_vencimentoTipo - tinyint
+calendario_dataLimiteValor - varchar(1000)
+
+NOVAS COLUNAS EM cobranca:
+cobranca_tipo - tinyint

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="searchUsuarioMethod.aspx.cs" Inherits="www.searchUsuarioMethod" %>

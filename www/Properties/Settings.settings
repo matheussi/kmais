@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="www.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="www_wsCEP_calcula_frete" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.maniezo.com.br/webservice/soap-server.php</Value>
+    </Setting>
+    <Setting Name="www_MailServASMX_mail" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://linkecerebro.com.br/mailsrv/mail.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
