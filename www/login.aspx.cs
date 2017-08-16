@@ -28,11 +28,11 @@
                 
                 Usuario.Autenticado.Encerrar();
 
-                String currUrl = Request.Url.ToString();
-                if (!string.IsNullOrEmpty(currUrl) && currUrl.IndexOf("pspadrao") > -1 && string.IsNullOrEmpty(Request["bypass"]))
-                {
-                    Response.Redirect("https://sistemas.qualicorp.com.br/");
-                }
+                //String currUrl = Request.Url.ToString();
+                //if (!string.IsNullOrEmpty(currUrl) && currUrl.IndexOf("pspadrao") > -1 && string.IsNullOrEmpty(Request["bypass"]))
+                //{
+                //    Response.Redirect("https://sistemas.qualicorp.com.br/");
+                //}
 
                 //if (currUrl.IndexOf("http://pspadraohomolog.iphotel.info") > -1)
                 //{
