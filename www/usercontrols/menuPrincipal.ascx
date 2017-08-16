@@ -3,40 +3,7 @@
     <%--<div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
     <div class='itemMenu'><a id="A1" runat="server" enableviewstate="false" href='~/default.aspx' class='menu_site'>Home</a></div>
     <div class='divMenu'><img runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>--%>
-    <div class='itemMenu'>
-        <asp:Menu ID="mnuUBRASP" runat="server" Orientation="Horizontal">
-            <StaticMenuItemStyle CssClass="menu_site" />
-            <DynamicMenuStyle BackColor="WhiteSmoke" BorderWidth="1px" HorizontalPadding="8px" VerticalPadding="0px" />
-            <DynamicMenuItemStyle BackColor="WhiteSmoke" BorderColor="darkgray" BorderWidth="0px" CssClass="menu_site" ItemSpacing="0px" HorizontalPadding="8px" VerticalPadding="8px" BorderStyle="None" />
-            <Items>
-                <asp:MenuItem Selectable="false" Text="UBRASP" Value="UBRASP" >
-                    <asp:MenuItem Text="Arquivos" Selectable="false" Value="UbrArquivos">
-                        <asp:MenuItem Text="Prodesp" Selectable="false" Value="UbrArquivosProdesp">
-                            <asp:MenuItem Text="Processar" NavigateUrl="~/UBRASP/arquivos/prodesp/processar.aspx" Value="UbrArquivosProdespRet" />
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="PSCC" Selectable="false" Value="UbrArquivosPSCC">
-                            
-                            <%--<asp:MenuItem Text="Novo arquivo" NavigateUrl="~/UBRASP/arquivos/scc/descontosOcorridos.aspx" Value="UbrArquivosPSCCDescontos" />
-                            <asp:MenuItem Text="Processados" NavigateUrl="~/UBRASP/arquivos/scc/processados.aspx" Value="UbrArquivosPSCCProcessados" />--%>
-                            <asp:MenuItem Text="Beneficiários cobrados por boleto" NavigateUrl="~/UBRASP/arquivos/scc/emissoesPorBoleto.aspx" Value="UbrArquivosPSCCEmissoesPorBol" />
-                            <asp:MenuItem Text="Verificar descontos" NavigateUrl="~/UBRASP/arquivos/scc/verificarValoresDescontados.aspx" Value="UbrArquivosPSCCVerificarDesc" />
-                        </asp:MenuItem>
-                    </asp:MenuItem>
-                    <asp:MenuItem Text="Beneficiários" NavigateUrl="~/beneficiarios.aspx?leg=1" Value="uBeneficirio" />
-                    <asp:MenuItem Text="Propostas" NavigateUrl="~/UBRASP/contratos.aspx" Value="uContratos" />
-                    <asp:MenuItem Text="Reajustes de adicionais" NavigateUrl="~/ajusteAdicionais.aspx" Value="ReajusteAdicionais" />
-                    <asp:MenuItem Text="Relatórios" Selectable="false" Value="MovRelatorios">
-                        <asp:MenuItem Text="Beneficiários por órgão" NavigateUrl="~/relatorios/repTotalPorAdicinal.aspx?b=1" Value="beneficiariosPorOrgao" />
-                        <asp:MenuItem Text="Totais por adicional" NavigateUrl="~/relatorios/repTotalPorAdicinal.aspx" Value="totaisPorAdicional" />
-                    </asp:MenuItem>
-                    <asp:MenuItem Text="Financeiro" Selectable="false" Value="UFianceiro">
-                        <asp:MenuItem Text="Gerar CNAB" NavigateUrl="~/UBRASP/financeiro/gerarCobrancas.aspx" Value="UGerarCobrancas" />
-                        <asp:MenuItem Text="Consutlar CNAB" NavigateUrl="~/UBRASP/financeiro/consultarAgendamentos.aspx" Value="UConsultarCobrancas" />
-                    </asp:MenuItem>
-                </asp:MenuItem>
-            </Items>
-        </asp:Menu>
-    </div>
+
     <div class='divMenu'><img id="Img1" runat="server" enableviewstate="false" src='~/images/site/divMenu.jpg' alt='' border='0' /></div>
     <div class='itemMenu'>
         <asp:Menu ID="mnuCadastros" runat="server" Orientation="Horizontal">
