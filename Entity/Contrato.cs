@@ -1556,9 +1556,18 @@
             if (calculaValorEstipulante) { valorEstipulante = CalculaValorDaTaxaAssociativa(contrato, beneficiarios.Count, null, pm); }
             composite.Add(new CobrancaComposite(null, null, CobrancaComposite.eComposicaoTipo.TaxaAssociacao, valorEstipulante));
 
+            ContratoADM contratoadm = new ContratoADM(contrato.ContratoADMID);
+            pm.Load(contratoadm);
+
             ContratoBeneficiario.eStatus status = ContratoBeneficiario.eStatus.Desconhecido;
             foreach (ContratoBeneficiario contratoBeneficiario in beneficiarios)
             {
+                if (contratoadm.TipoCalculoValor == (int)ContratoADM.eTipoCalculoValor.SomenteTitular)
+                {
+                    // contratoBeneficiario.Tipo = 0: titular
+                    if (contratoBeneficiario.Tipo != 0) continue;
+                }
+
                 status = (ContratoBeneficiario.eStatus)contratoBeneficiario.Status;
 
                 #region nesses casos não calcula o valor
@@ -1679,9 +1688,18 @@
                 composite.Add(new CobrancaComposite(null, null, CobrancaComposite.eComposicaoTipo.TaxaAssociacao, valorEstipulante));
             }
 
+            ContratoADM contratoadm = new ContratoADM(contrato.ContratoADMID);
+            pm.Load(contratoadm);
+
             ContratoBeneficiario.eStatus status = ContratoBeneficiario.eStatus.Desconhecido;
             foreach (ContratoBeneficiario contratoBeneficiario in beneficiarios)
             {
+                if (contratoadm.TipoCalculoValor == (int)ContratoADM.eTipoCalculoValor.SomenteTitular)
+                {
+                    // contratoBeneficiario.Tipo = 0: titular
+                    if (contratoBeneficiario.Tipo != 0) continue;
+                }
+
                 status = (ContratoBeneficiario.eStatus)contratoBeneficiario.Status;
 
                 #region nesses casos não calcula o valor

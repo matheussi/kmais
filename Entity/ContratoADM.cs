@@ -38,6 +38,36 @@
 
         #endregion
 
+        /// <summary>
+        /// Tipo de cálculo a ser aplicado no valor das propostas deste contrato adm.
+        /// </summary>
+        public enum eTipoCalculoValor : int
+        {
+            /// <summary>
+            /// Calcula o valor de todos os integrantes do contrato
+            /// </summary>
+            Padrao = 0,
+            /// <summary>
+            /// Calcula o valor do contrato levando em consideração somente o titular
+            /// </summary>
+            SomenteTitular
+        }
+
+        public class UI
+        {
+            public static string[,] TiposDeCalculo
+            {
+                get
+                {
+                    return new string[,] 
+                    { 
+                        { "0", "Padrão" }, 
+                        { "1", "Somente titulares" } 
+                    };
+                }
+            }
+        }
+
         #region propriedades 
 
         [DBFieldInfo("contratoadm_id", FieldType.PrimaryKeyAndIdentity)]
@@ -129,6 +159,13 @@
         {
             get { return _codAdministradora; }
             set { _codAdministradora= value; }
+        }
+
+        [DBFieldInfo("contratoadm_tipoCalculo", FieldType.Single)]
+        public int TipoCalculoValor
+        {
+            get;
+            set;
         }
 
         [Joinned("operadora_nome")]

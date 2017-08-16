@@ -368,6 +368,10 @@
                                                     <td><asp:TextBox runat="server" EnableViewState="false" ID="txtContratoCodAdministradora" Width="50%" MaxLength="50" SkinID="textboxSkin" /></td>
                                                 </tr>
                                                 <tr>
+                                                    <td><span class="subtitulo">Tipo Cálculo</span></td>
+                                                    <td><asp:DropDownList runat="server" EnableViewState="true" ID="cboContratoAdmTipoCalc" Width="60%" SkinID="dropdownSkin" /></td>
+                                                </tr>
+                                                <tr>
                                                     <td><span class="subtitulo">Data</span></td>
                                                     <td>
                                                         <asp:TextBox EnableViewState="false" SkinID="textboxSkin" Width="67px" runat="server" ID="txtContratoData" onkeypress="filtro_SoNumeros(event); mascara_DATA(this, event);" MaxLength="10" />

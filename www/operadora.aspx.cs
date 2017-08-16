@@ -951,6 +951,8 @@
                 txtContratoCodUnidade.Text = contrato.CodUnidade;
                 txtContratoCodAdministradora.Text = contrato.CodAdministradora;
 
+                this.preparaComboTipoDeCalculo(contrato);
+
                 chkContratoAtivo.Checked = contrato.Ativo;
                 txtContratoData.Text = contrato.Data.ToString("dd/MM/yyyy");
 
@@ -982,6 +984,24 @@
                 contrato.Ativo = !contrato.Ativo;
                 contrato.Salvar();
                 this.CarregaContratos();
+            }
+        }
+
+        void preparaComboTipoDeCalculo(ContratoADM contrato)
+        {
+            cboContratoAdmTipoCalc.Items.Clear();
+
+            string[,] tipos = ContratoADM.UI.TiposDeCalculo;
+            for (int i = 0; i < tipos.Rank; i++) //foreach (var tipo in tipos)
+            {
+                ListItem item = new ListItem(tipos[i, 1], tipos[i, 0]);
+
+                if (contrato != null)
+                {
+                    if (item.Value == contrato.TipoCalculoValor.ToString()) { item.Selected = true; }
+                }
+
+                cboContratoAdmTipoCalc.Items.Add(item);
             }
         }
 
@@ -1020,6 +1040,8 @@
             txtContratoCodUnidade.Text = "";
             txtContratoCodAdministradora.Text = "";
             chkContratoAtivo.Checked = true;
+
+            this.preparaComboTipoDeCalculo(null);
         }
 
         protected void cmdFecharContrato_Click(Object sender, EventArgs e)
@@ -1121,6 +1143,7 @@
             contrato.CodFilial = txtContratoCodFilial.Text;
             contrato.CodUnidade = txtContratoCodUnidade.Text;
             contrato.CodAdministradora = txtContratoCodAdministradora.Text;
+            contrato.TipoCalculoValor = Convert.ToInt32(cboContratoAdmTipoCalc.SelectedValue);
             contrato.Salvar();
             this.CarregaContratos();
 

@@ -64,10 +64,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\LCProjects\Framework\bin2\LC.Framework.BusinessLayer.dll</HintPath>
     </Reference>
-    <Reference Include="LC.Framework.DataUtil, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6cd9ff00472bb2cc, processorArchitecture=MSIL">
+    <Reference Include="LC.Framework.DataUtil, Version=1.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\LCProjects\Framework\bin2\LC.Framework.DataUtil.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\Framework\DataUtil\bin\Debug\LC.Framework.DataUtil.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NextWay.Framework.PhantomV2, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">

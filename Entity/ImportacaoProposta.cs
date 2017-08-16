@@ -11,7 +11,7 @@
     using System.Collections.Generic;
 
     using LC.Framework.Phantom;
-    using LC.Framework.DataUtil;
+    //using LC.Framework.DataUtil;
 
     public class ImportacaoProposta
     {
